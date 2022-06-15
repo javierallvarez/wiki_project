@@ -1,0 +1,15 @@
+   
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ entry_title }}
+{% endblock %}
+
+{% block body %}
+    <img src="https://ayudawp.com/wp-content/uploads/2013/05/404.png" alt="">
+    <h3>We are sorry:</h3>
+
+    <p>{{ error }} </p>
+    <p>Try again or go back to the <a href="{% url 'index' %}">index</a> page.</p>
+
+{% endblock %}

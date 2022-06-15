@@ -1,0 +1,18 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {% if edit %}
+        Editing {{ entry_title }}
+    {% else %}
+        New entry
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+        
+    <div class="alert alert-danger" role="alert">
+        Error. <br>
+        <a href="{{ edit }}" class="alert-link">Click here</a> and try to write something this time.
+    </div>
+          
+{% endblock %}

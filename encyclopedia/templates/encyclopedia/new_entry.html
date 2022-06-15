@@ -1,0 +1,40 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {% if edit %}
+        Editing {{ entry_title }}
+    {% else %}
+        New entry
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% if edit %}
+        <h1>Editing {{ entry_title }}</h1>
+    {% else %}
+        <form method="POST">
+            {% csrf_token %}
+            <h1>New entry is coming!</h1>
+            <div class="mb-3">
+                <label for="title" class="form-label">Write a title for your entry:</label>
+                <input type="text" class="form-control" name="title" placeholder="Title" autocomplete="off" style="width:80%;">
+            </div>
+            <div class="mb-3">
+                <label for="info" class="form-label">Text:</label>
+                <textarea name="content" class="form-control" placeholder="Write text in markdown" rows="10" style="width:80%; max-height:50%;"></textarea>
+            </div>
+            <button type="submit" class="btn btn-outline-dark">Submit</button>
+        </form>
+    {% endif %}
+
+    
+    {% if existing %}
+    <div class="alert alert-danger" role="alert">
+        This entry already exists. If you want to view or edit it, <a href="/wiki/{{ entry }}" class="alert-link">click here</a>.
+    </div>
+    <div class="alert alert-info" role="alert">
+        Or you can change the entry name down here. It's up to you ¯\_(ツ)_/¯
+    </div>
+    {% endif %}
+             
+{% endblock %}
